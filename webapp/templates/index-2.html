@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7 no-js" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 no-js" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+{% load static %}
+
+<html lang="en" class="no-js">
+
+<!-- index14:58-->
+<head>
+	<!-- Basic need -->
+	<title>Movie- Eecon</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<link rel="profile" href="#">
+
+    <!--Google Font-->
+    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+	<!-- Mobile specific meta -->
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<meta name="format-detection" content="telephone-no">
+
+	<!-- CSS files -->
+	<link rel="stylesheet" href={% static "css/plugins.css"%}>
+	<link rel="stylesheet" href={% static "css/style.css"%}>
+
+
+
+</head>
+<body>
+<!--preloading-->
+<div id="preloader">
+    <img class="logo" src={% static "images/logo1.png"%} alt="" width="119" height="58">
+    <div id="status">
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<!--end of preloading-->
+<!--login form popup-->
+<div class="login-wrapper" id="login-content">
+    <div class="login-content">
+        <a href="#" class="close">x</a>
+
+        <form method="post" action="#">
+        	<div class="row">
+        		 
+        	</div>
+           
+            <div class="row">
+            	
+            </div>
+            <div class="row">
+            	<div class="remember">
+					
+            	</div>
+            </div>
+           <div class="row">
+           	 
+           </div>
+        </form>
+        <div class="row">
+        
+            </div>
+        </div>
+    </div>
+</div>
+<!--end of login form popup-->
+<!--signup form popup-->
+<div class="login-wrapper"  id="signup-content">
+    <div class="login-content">
+        <a href="#" class="close">x</a>
+        <h3>Emotion</h3>
+		<form method="get" action="/data/emotion">
+		
+        <div class="row">
+			<label for="email-2">
+		
+			</label>
+		</div>
+           <div class="row">
+             <button type="submit">Scan</button>
+           </div>
+		</form>
+    </div>
+</div>
+<!--end of signup form popup-->
+
+<!-- BEGIN | Header -->
+<header class="ht-header">
+	<div class="container">
+		<nav class="navbar navbar-default navbar-custom">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header logo">
+				    <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					    
+					    <div id="nav-icon1">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+				    </div>
+				    <a href="/"><img class="logo" src={% static "images/logo1.png"%} alt="" width="119" height="58"></a>
+			    </div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav flex-child-menu menu-left">
+						<li class="hidden">
+							<a href="#page-top"></a>
+						</li>
+
+
+						<li class="dropdown first">
+							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">
+							media <i class="fa fa-angle-down" aria-hidden="true"></i>
+							</a>
+							<ul class="dropdown-menu level1">
+								<li><a href="/">Movie</a></li>
+								<li><a href="/images">Images</a></li>
+							</ul>
+						</li>
+						
+						
+					
+					
+					</ul>
+					<ul class="nav navbar-nav flex-child-menu menu-right">
+						
+						<li class="btn signupLink"><a href="#">Emotion</a></li>
+					</ul>
+				</div>
+			<!-- /.navbar-collapse -->
+	    </nav>
+	    
+	    <!-- top search form -->
+		<form action="" method="post">
+			{% csrf_token %}
+	    <div class="top-search" > 
+	    	<select name='search'>
+				<option value="name">Name Based</option>
+				<option value="keyword">Keyword Based</option>
+				<option value="content">Content Based</option>
+			</select>
+			<input type="text" name="movies" id="movie_name" placeholder="Search for a movie,">
+	    </div>
+	</form>
+	</div>
+</header>
+<!-- END | Header -->
+<div class="hero common-hero">
+	<div class="container">
+	
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<h1>Search - {{name}}</h1>
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Emotion</a></li>
+						<li> <span class="ion-ios-arrow-right"></span> {{emotion}}</li>
+					</ul>
+				</div>
+			</div>
+	
+	</div>
+</div>
+<div class="slider movie-items">
+	<div class="container">
+		<div class="row">
+			
+	    	<div  class="slick-multiItemSlider">
+				{% for b in data_table.itertuples %}
+        
+
+	    		<div class="movie-item">
+	    			
+					<div class="mv-img">
+	    				<img src=http://image.tmdb.org/t/p/w500/{{b.poster_path}} alt="" width="285" height="437">
+	    			</div>
+					<div class="hvr-inner">
+						<a  href="/data/{{b.id}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					</div>
+	    			<div class="title-in">
+	    				<div class="cate">
+	    					<span class="blue"><a href="#">{{b.genres}}</a></span>
+	    				</div>
+	    				<h6><a href="/data/{{b.id}}">{{b.title}}</a></h6>
+	    				<p><i class="ion-android-star"></i><span>{{b.vote_average}}</span> /10</p>
+	    			</div>
+	    		</div>
+	    		
+	    		{% endfor %} 
+	    	</div>
+	    </div>
+	</div>
+</div>
+<div class="movie-items">
+	<div class="container">
+		
+			<div class="col-md-0">
+				<div class="title-hd">
+					<h2>Content Based </h2>
+					<a href="/data/{{name|safe}}/content" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+				</div>
+				<div class="tabs">
+					<ul class="tab-links">
+					
+							<li><a href="#tab21">.</a></li>
+							<li><a href="#tab22">.</a></li>
+							<li><a href="#tab23">.</a></li>
+							<li><a href="#tab24">.</a></li>                        
+						                 
+					</ul>
+				    <div class="tab-content">
+				        <div id="tab1" class="tab active">
+				            <div class="row">
+				            	<div class="slick-multiItem">
+				            		
+								{% for b in content_table.itertuples %}
+									<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src=http://image.tmdb.org/t/p/w500/{{b.poster_path}} alt="" width="185" height="284">
+					            			</div> 
+					            			<div class="hvr-inner">
+					            				<a  href="/data/{{b.id}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="/data/{{b.id}}">{{b.title}}</a></h6>
+					            				<p><i class="ion-android-star"></i><span>{{b.vote_average}}</span> /10</p>
+					            			</div>
+					            		</div> 
+				            		</div>
+								{% endfor %}
+				            	
+				            	</div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+				<div class="title-hd">
+					<h2>Keyword Based</h2>
+					<a href="data/{{name}}/keyword" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+				</div>
+				<div class="tabs">
+					<ul class="tab-links-2">
+						<li><a href="#tab21">.</a></li>
+						<li ><a href="#tab22">.</a></li>
+						<li><a href="#tab23">.</a></li>
+						<li><a href="#tab24">.</a></li>                        
+					</ul>
+				    <div class="tab-content">
+				        <div id="tab2" class="tab active">
+				            <div class="row">
+				            	<div class="slick-multiItem">
+				            		
+								{% for b in keyword_table.itertuples %}
+									<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src=http://image.tmdb.org/t/p/w500/{{b.poster_path}} alt="" width="185" height="284">
+					            			</div> 
+					            			<div class="hvr-inner">
+					            				<a  href="/data/{{b.id}}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="/data/{{b.id}}">{{b.title}}</a></h6>
+					            				<p><i class="ion-android-star"></i><span>{{b.vote_average}}</span> /10</p>
+					            			</div>
+					            		</div> 
+				            		</div>
+								{% endfor %}
+				            	
+				            	</div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			</div>
+			
+		
+	</div>
+</div>
+
+<!-- latest new v1 section-->
+<div class="latestnew">
+	<div class="container">
+		<div class="row ipad-width">
+	
+		</div>
+	</div>
+</div>
+<!--end of latest new v1 section-->
+<!-- footer section-->
+<footer class="ht-footer">
+
+</footer>
+<!-- end of footer section-->
+
+<script src={% static "js/jquery.js"%}></script>
+<script src={% static "js/plugins.js"%}></script>
+<script src={% static "js/plugins2.js"%}></script>
+<script src={% static "js/custom.js"%}></script>
+</body>
+
+<!-- index14:58-->
+</html>

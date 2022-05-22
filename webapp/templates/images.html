@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7 no-js" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 no-js" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+{% load static %}
+
+<html lang="en" class="no-js">
+
+<!-- index14:58-->
+<head>
+	<!-- Basic need -->
+	<title>Movie- Eecon</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<link rel="profile" href="#">
+
+    <!--Google Font-->
+    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+	<!-- Mobile specific meta -->
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<meta name="format-detection" content="telephone-no">
+
+	<!-- CSS files -->
+	<link rel="stylesheet" href={% static "css/plugins.css"%}>
+	<link rel="stylesheet" href={% static "css/style.css"%}>
+
+    <style>
+        * {
+          box-sizing: border-box
+        }
+        body {
+          font-family: Verdana, sans-serif;
+          margin: 0
+        }
+        .mySlides {
+          display: none
+        }
+        img {
+          vertical-align: middle;
+        }
+        .slideshow-container {
+          max-width: 1000px;
+          position: relative;
+          margin: auto;
+        }
+        /* Next & previous buttons */
+        .prev,
+        .next {
+          cursor: pointer;
+          position: absolute;
+          top: 50%;
+          width: auto;
+          padding: 16px;
+          margin-top: -22px;
+          color: white;
+          font-weight: bold;
+          font-size: 18px;
+          transition: 0.6s ease;
+          border-radius: 0 3px 3px 0;
+          user-select: none;
+        }
+        /* Position the "next button" to the right */
+        .next {
+          right: 0;
+          border-radius: 3px 0 0 3px;
+        }
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+          background-color: rgba(0, 0, 0, 0.8);
+        }
+        /* Caption text */
+        .text {
+          color: #ffffff;
+          font-size: 15px;
+          padding: 8px 12px;
+          position: absolute;
+          bottom: 8px;
+          width: 100%;
+          text-align: center;
+        }
+        /* Number text (1/3 etc) */
+        .numbertext {
+          color: #ffffff;
+          font-size: 12px;
+          padding: 8px 12px;
+          position: absolute;
+          top: 0;
+        }
+        /* The dots/bullets/indicators */
+        .dot {
+          cursor: pointer;
+          height: 15px;
+          width: 15px;
+          margin: 0 2px;
+          background-color: #999999;
+          border-radius: 50%;
+          display: inline-block;
+          transition: background-color 0.6s ease;
+        }
+        .active,
+        .dot:hover {
+          background-color: #111111;
+        }
+        /* Fading animation */
+        .fade {
+          -webkit-animation-name: fade;
+          -webkit-animation-duration: 1.5s;
+          animation-name: fade;
+          animation-duration: 9.5s;
+        }
+        @-webkit-keyframes fade {
+          from {
+            opacity: .8
+          }
+          to {
+            opacity: 1
+          }
+        }
+        @keyframes fade {
+          from {
+            opacity: .8
+          }
+          to {
+            opacity: 1
+          }
+        }
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+          .prev,
+          .next,
+          .text {
+            font-size: 11px
+          }
+        }
+      </style>
+
+</head>
+<body>
+<!--preloading-->
+<div id="preloader">
+    <img class="logo" src={% static "images/logo1.png"%} alt="" width="119" height="58">
+    <div id="status">
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<!--end of preloading-->
+<!--login form popup-->
+<div class="login-wrapper" id="login-content">
+    <div class="login-content">
+        <a href="#" class="close">x</a>
+
+        <form method="post" action="#">
+        	<div class="row">
+        		 
+        	</div>
+           
+            <div class="row">
+            	
+            </div>
+            <div class="row">
+            	<div class="remember">
+					
+            	</div>
+            </div>
+           <div class="row">
+           	 
+           </div>
+        </form>
+        <div class="row">
+        
+            </div>
+        </div>
+    </div>
+</div>
+<!--end of login form popup-->
+<!--signup form popup-->
+<div class="login-wrapper"  id="signup-content">
+    <div class="login-content">
+        <a href="#" class="close">x</a>
+        <h3>Emotion</h3>
+		<form method="get" action="/data/emotionimage">
+		
+        <div class="row">
+			<label for="email-2">
+		
+			</label>
+		</div>
+           <div class="row">
+             <button type="submit">Scan</button>
+           </div>
+		</form>
+    </div>
+</div>
+<!--end of signup form popup-->
+
+<!-- BEGIN | Header -->
+<header class="ht-header">
+	<div class="container">
+		<nav class="navbar navbar-default navbar-custom">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header logo">
+				    <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					    
+					    <div id="nav-icon1">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+				    </div>
+				    <a href="/"><img class="logo" src={% static "images/logo1.png"%} alt="" width="119" height="58"></a>
+			    </div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav flex-child-menu menu-left">
+						<li class="hidden">
+							<a href="#page-top"></a>
+						</li>
+						
+						<li class="dropdown first">
+							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">
+							media <i class="fa fa-angle-down" aria-hidden="true"></i>
+							</a>
+							<ul class="dropdown-menu level1">
+								<li><a href="/">Movie</a></li>
+								<li><a href="/images">Images</a></li>
+							</ul>
+						</li>
+					
+					
+					</ul>
+					<ul class="nav navbar-nav flex-child-menu menu-right">
+						
+						<li class="btn signupLink"><a href="#">Emotion</a></li>
+					</ul>
+				</div>
+			<!-- /.navbar-collapse -->
+	    </nav>
+	    
+	    <!-- top search form -->
+		
+	</div>
+</header>
+<!-- END | Header -->
+<div class="hero common-hero">
+	<div class="container">
+	
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<ul class="breadcumb">
+						<li class="active"><a href="#">Emotion</a></li>
+						<li> <span class="ion-ios-arrow-right"></span> {{emotion}}</li>
+					</ul>
+				</div>
+			</div>
+	
+	</div>
+</div>
+<div class="slider movie-items">
+    <div class="container">
+
+            <div class="slideshow-container">
+                {% for b in img %}
+                <div class="mySlides fade">
+                
+                <img src={{b}} style="width:100%">
+
+                </div>
+                {% endfor %}
+            
+            
+               
+            </div>
+            <br>
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+    </div>
+
+<!-- latest new v1 section-->
+</div>
+<div class="latestnew">
+	<div class="container">
+		<div class="row ipad-width">
+	
+		</div>
+	</div>
+</div>
+<!--end of latest new v1 section-->
+<!-- footer section-->
+<footer class="ht-footer">
+
+</footer>
+<!-- end of footer section-->
+<script>
+    var slideIndex = 0;
+    showSlides();
+    function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      for(i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if(slideIndex > slides.length) {
+        slideIndex = 1
+      }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 10000); // Change image every 2 seconds
+    }
+  </script>
+<script src={% static "js/jquery.js"%}></script>
+<script src={% static "js/plugins.js"%}></script>
+<script src={% static "js/plugins2.js"%}></script>
+<script src={% static "js/custom.js"%}></script>
+</body>
+
+<!-- index14:58-->
+</html>

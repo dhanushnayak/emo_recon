@@ -1,0 +1,42 @@
+<html>
+<body>
+  <video id="video" width="640" height="480" autoplay></video>
+  <button id="snap">Take Photo</button>
+  <canvas id="canvas" width="640" height="480"></canvas>
+  <script>
+      let canvas = document.querySelector("#canvas");
+let context = canvas.getContext("2d");
+let video = document.querySelector("#video");
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+  navigator.mediaDevices.getUserMedia({video: true}).then((stream) =>{
+     video.srcObject = stream;
+     video.play();
+  });
+}
+document.getElementById("snap").addEventListener("click", () => {
+  context.drawImage(video, 0, 0, 640, 480); 
+
+  canvas.toBlob(function(blob){
+    console.log(typeof(blob))
+    var blobUrl = URL.createObjectURL(blob);
+    var link = document.createElement("a"); 
+   
+    var url = window.location.pathname;
+    var folderpath = url.substring(0,url.lastIndexOf('/')+1);
+    link.href = blobUrl;
+    console.log(folderpath)
+    link.download = 'image.jpg'
+    //link.download = folderpath+"image.jpg";
+    link.innerHTML = "Click here to download the file";
+    
+
+    document.body.appendChild(link); 
+    document.querySelector('a').click() 
+  }, 'image/jpeg', 1); 
+
+});
+
+
+  </script>
+</body>
+</html>
